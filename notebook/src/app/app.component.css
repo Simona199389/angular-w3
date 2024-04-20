@@ -1,0 +1,78 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+  h1 {
+    text-align: center;
+  }
+  .notebook-form {
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    width: 800px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+  input,
+  textarea:focus {
+    border-color: #6ba3d7;
+    outline: #6ba3d7;
+  }
+  .form input,
+  button,
+  textarea {
+    border: 2px solid #6ba3d7;
+    resize: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: #e03232;
+    margin: 5px;
+  }
+  .form button {
+    background-color: #ffc9c9;
+    color: #6ba3d7;
+    cursor: pointer;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    button {
+      color: #6ba3d7;
+      background-color: #ffc9c9;
+      cursor: pointer;
+    }
+    .editBtn {
+      background-color: #a5d8ff;
+      color: #6ba3d7;
+    }
+  }
+  .note {
+    border: 2px solid #e03232;
+    border-radius: 10px;
+    color: #f1920c;
+    padding: 5px;
+    width: 250px;
+    height: fit-content;
+    cursor: pointer;
+  }
+  .active {
+    border: 2px dashed #e03232;
+  }
+  
+  .note-side {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    line-break: anywhere;
+  }
+  .note-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    line-break: anywhere;
+  }

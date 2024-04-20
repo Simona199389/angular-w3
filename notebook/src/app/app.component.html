@@ -1,0 +1,78 @@
+<h1>{{ title }}</h1>
+<div class="main-container">
+  <div class="notebook-form">
+    <form ngNativeValidate *ngIf="!editableNote" class="form" (ngSubmit)="saveNote()">
+      <input
+        type="text"
+        id="title"
+        name="title"
+        minlength="5"
+        [(ngModel)]="noteTitle"
+        placeholder="Заглавие на бележката"
+        required
+      />
+      <textarea
+        id="content"
+        name="content"
+        minlength="7"
+        [(ngModel)]="noteContent"
+        placeholder="Съдържание на бележката"
+        required
+        rows="6"
+        cols="50"
+      ></textarea>
+      <button type="submit">СЪХРАНИ БЕЛЕЖКАТА</button>
+    </form>
+    <form
+      *ngIf="editableNote"
+      class="form"
+      (ngSubmit)="editNote()"
+      #editForm="ngForm"
+    >
+      <input
+        type="text"
+        id="title"
+        name="title"
+        minlength="5"
+        [(ngModel)]="editableNote.title"
+        placeholder="Заглавие на бележката"
+        required
+        #editableTitle="ngModel"
+      />
+      <textarea
+        id="content"
+        name="content"
+        minlength="7"
+        [(ngModel)]="editableNote.content"
+        placeholder="Съдържание на бележката"
+        required
+        rows="6"
+        cols="50"
+        #editableContent="ngModel"
+      ></textarea>
+      <button type="submit" [disabled]="editForm.invalid">
+        ПРОМЕНИ БЕЛЕЖКАТА
+      </button>
+      <!-- ^ Disable the button if the form is invalid -->
+    </form>
+
+    <div class="note-side">
+      <div class="note-container" *ngFor="let note of notes">
+        <div
+          [ngClass]="note.active ? 'active' : ''"
+          class="note"
+          (click)="selectNote(note.id)"
+        >
+          <div>{{ note.title }}</div>
+          <div>{{ note.content }}</div>
+        </div>
+        <div class="buttons" *ngIf="note.active">
+          <button (click)="deleteNote(note.id)">изтрии</button>
+          <button class="editBtn" (click)="maeEditableNote(note)">
+            редакция
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
